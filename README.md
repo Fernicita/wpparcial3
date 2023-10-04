@@ -5,10 +5,11 @@ Sistema diseñado para la gestión de proyectos de desarollo de software, a trav
 
 
 # Diagrama de clases
-![Diagrama de clases](./resources/DiagramaDeClases.jpg)
+![Diagrama de clases](./resources/DiagramaDeClases/DiagramaDeClases.jpg)
 
 
 # Diagrama de interacción
+
 
 
 # Herramientas utilizadas
