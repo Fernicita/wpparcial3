@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose');
+const {expressjwt} = require('express-jwt');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -15,6 +17,16 @@ const sprintBacklogsRouter = require( ' ./routes/sprintBacklogs' );
 const releaseBacklogsRouter = require( ' ./routes/releaseBacklogs' );
 
 var app = express();
+const url = 'mongodb://localhost:27017/agile';
+mongoose.connect(url);
+const db = mongoose.connection;
+db.on('open', () => {
+  console.log('Conectado a la base de datos');
+});
+
+db.on('error', (err) => {
+  console.log('No se pudo conectar a la base de datos', err);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
