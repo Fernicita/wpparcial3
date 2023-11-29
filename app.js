@@ -1,23 +1,28 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const mongoose = require('mongoose');
+const config = require('./config');
+const i18n = require('i18n');
 const {expressjwt} = require('express-jwt');
+const jwtkey = config.get('secret.key');
+
+//app.use(expressjwt({secret:JwtKey,algorithms:['HS256']}).unless({path:['/login']})); 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-const backlogsRouter = require( ' ./routes/backlogs');
-const controlPanelRouter = require( ' ./routes/controlPanel' );
-const projectsRouter = require( ' ./routes/projects' );
-const loginRouter = require( ' ./routes/login' );
-const usersHistoryRouter = require( ' ./routes/usersHistory' );
-const sprintBacklogsRouter = require( ' ./routes/sprintBacklogs' );
-const releaseBacklogsRouter = require( ' ./routes/releaseBacklogs' );
+//var usersRouter = require('./routes/users');
+const backlogsRouter = require( './routes/backlogs.js');
+const controlPanelRouter = require( './routes/controlPanel.js' );
+const projectsRouter = require( './routes/projects.js' );
+const loginRouter = require( './routes/login.js' );
+const usersHistoryRouter = require( './routes/usersHistory.js' );
+const sprintBacklogsRouter = require( './routes/sprintBacklogs.js' );
+const releaseBacklogsRouter = require( './routes/releaseBacklogs.js' );
 
 var app = express();
-const url = 'mongodb://localhost:27017/agile';
+const url = config.get("dbChain");
 mongoose.connect(url);
 const db = mongoose.connection;
 db.on('open', () => {
@@ -26,6 +31,12 @@ db.on('open', () => {
 
 db.on('error', (err) => {
   console.log('No se pudo conectar a la base de datos', err);
+});
+
+i18n.configure({
+  locales:['es','en'], 
+  cookie:'language',
+  directory:`${__dirname}/locales`
 });
 
 // view engine setup
@@ -39,7 +50,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/users', usersRouter);
 app.use('/backlogs', backlogsRouter);
 app.use('/controlPanel', controlPanelRouter);
 app.use('/projects', projectsRouter);

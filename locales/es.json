@@ -1,0 +1,141 @@
+{
+    "login":{
+        "success":"Login exitoso",
+        "fail":"Usuario y/o contraseña incorrectos"
+    },
+    "register":{
+        "success":"Registro exitoso",
+        "fail":"error al registrar"
+    },
+    "create":{
+        "backlog":{
+            "success":"Backlog creado correctamente",
+            "fail":"error al crear el backlog"
+        },
+        "project":{
+            "success":"proyecto creado correctamente",
+            "fail":"error al crear el proyecto"
+        },
+        "userHistory":{
+            "success":"Historia de usuario creada correctamente",
+            "fail":"error al crear historia de usuario"
+        },
+        "member":{
+            "success":"Miembro creado correctamente",
+            "fail":"error al crear miembros"
+        },
+        "realeaseBacklog":{
+            "success":"RealeaseBacklog  creado correctamente",
+            "fail":"error al crear Realeasebacklog "
+        },
+        "sprint":{
+            "success":"Sprint creado correctamente",
+            "fail":"error al crear Sprint"
+        }
+    },
+    "list":{
+        "backlog":{
+            "success":"Backlog listado correctamente",
+            "fail":"error al listar el backlog"
+        },
+        "project":{
+            "success":"proyecto listado correctamente",
+            "fail":"error al listar el proyecto"
+        },
+        "userHistory":{
+            "success":"Historia de usuario listada correctamente",
+            "fail":"error al listar la historia de usuario"
+        },
+        "member":{
+            "success":"Miembro listado correctamente",
+            "fail":"error al listar los miembros"
+        },
+        "realeaseBacklog":{
+            "success":"RealeaseBacklog  listado correctamente",
+            "fail":"error al listar Realeasebacklog "
+        },
+        "sprint":{
+            "success":"Sprint listado correctamente",
+            "fail":"error al listar Sprint"
+        }
+    },
+    "update":{
+        "backlog":{
+            "success":"Backlog actualizado correctamente",
+            "fail":"error al actualizar el backlog"
+        },
+        "project":{
+            "success":"proyecto actualizado correctamente",
+            "fail":"error al actualizar el proyecto"
+        },
+        "userHistory":{
+            "success":"Historia de usuario actualizada correctamente",
+            "fail":"error al actualizar la historia de usuario"
+        },
+        "member":{
+            "success":"Miembros actualizado correctamente",
+            "fail":"error al actualizar los miembros"
+        },
+        "realeaseBacklog":{
+            
+            "success":"RealeaseBacklog  actualizado correctamente",
+            "fail":"error al actualizar Realeasebacklog "
+        },
+        "sprint":{
+            "success":"Sprint actualizado correctamente",
+            "fail":"error al actualizar Sprint"
+        }
+    },
+    "delete":{
+        "backlog":{
+            "success":"Backlog eliminado correctamente",
+            "fail":"error al eliminar el backlog"
+        },
+        "project":{
+            "success":"proyecto eliminado correctamente",
+            "fail":"error al eliminar el proyecto"
+        },
+        "userHistory":{
+            "success":"Historia de usuario eliminada correctamente",
+            "fail":"error al eliminar la historia de usuario"
+        },
+        "member":{
+            "success":"Miembros eliminado correctamente",
+            "fail":"error al eliminar los miembros"
+        },
+        "realeaseBacklog":{
+            "success":"RealeaseBacklog  eliminado correctamente",
+            "fail":"error al eliminar Realeasebacklog "
+        },
+        "sprint":{
+            "success":"Sprint eliminado correctamente",
+            "fail":"error al eliminar Sprint"
+        }
+    },
+    "replace":{
+        "backlog":{
+            "success":"Backlog reemplazado correctamente",
+            "fail":"error al reemplazar el backlog"
+        },
+        "project":{
+            "success":"proyecto reemplazado correctamente",
+            "fail":"error al reemplazar el proyecto"
+        },
+        "userHistory":{
+            "success":"Historia de usuario reemplazada correctamente",
+            "fail":"error al reemplazar la historia de usuario"
+        },
+        "member":{
+            "success":"Miembros reemplazado correctamente",
+            "fail":"error al reemplazar los miembros"
+        },
+        "realeaseBacklog":{
+            "success":"RealeaseBacklog  reemplazado correctamente",
+            "fail":"error al reemplazar Realeasebacklog "
+        },
+        "sprint":{
+            "success":"Sprint reemplazado correctamente",
+            "fail":"error al reemplazar Sprint"
+        }
+    }
+}

@@ -1,0 +1,141 @@
+{
+    "login":{
+        "success":"Login successful",
+        "fail":"Login failed"
+    },
+    "register":{
+        "success":"Register successful",
+        "fail":"Register failed"
+    },
+    "create":{
+        "backlog":{
+            "success":"Backlog created",
+            "fail":"Backlog creation failed"
+        },
+        "project":{
+            "success":"Project created",
+            "fail":"Project creation failed"
+        },
+        "userHistory":{
+            "success":"User history created",
+            "fail":"User history creation failed"
+        },
+        "member":{
+            "success":"Member created",
+            "fail":"Member creation failed"
+        },
+        "realeaseBacklog":{
+            "success":"Release backlog created",
+            "fail":"Release backlog creation failed"
+        },
+        "sprint":{
+            "success":"Sprint created",
+            "fail":"Sprint creation failed"
+        }
+    },
+    "list":{
+        "backlog":{
+            "success":"Backlog listed",
+            "fail":"Backlog listing failed"
+        },
+        "project":{
+            "success":"Project listed",
+            "fail":"Project listing failed"
+        },
+        "userHistory":{
+            "success":"User history listed",
+            "fail":"User history listing failed"
+        },
+        "member":{
+            "success":"Member listed",
+            "fail":"Member listing failed"
+        },
+        "realeaseBacklog":{
+            "success":"Release backlog listed",
+            "fail":"Release backlog listing failed"
+        },
+        "sprint":{
+            "success":"Sprint listed",
+            "fail":"Sprint listing failed"
+        }
+    },
+    "update":{
+        "backlog":{
+            "success":"Backlog updated",
+            "fail":"Backlog update failed"
+        },
+        "project":{
+            "success":"Project updated",
+            "fail":"Project update failed"
+        },
+        "userHistory":{
+            "success":"User history updated",
+            "fail":"User history update failed"
+        },
+        "member":{
+            "success":"Member updated",
+            "fail":"Member update failed"
+        },
+        "realeaseBacklog":{
+            "success":"Release backlog updated",
+            "fail":"Release backlog update failed"
+        },
+        "sprint":{
+            "success":"Sprint updated",
+            "fail":"Sprint update failed"
+        }
+    },
+    "replace":{
+        "backlog":{
+            "success":"Backlog replaced",
+            "fail":"Backlog replacement failed"
+        },
+        "project":{
+            "success":"Project replaced",
+            "fail":"Project replacement failed"
+        },
+        "userHistory":{
+            "success":"User history replaced",
+            "fail":"User history replacement failed"
+        },
+        "member":{
+            "success":"Member replaced",
+            "fail":"Member replacement failed"
+        },
+        "realeaseBacklog":{
+            "success":"Release backlog replaced",
+            "fail":"Release backlog replacement failed"
+        },
+        "sprint":{
+            "success":"Sprint replaced",
+            "fail":"Sprint replacement failed"
+        }
+    },
+    "delete":{
+        "backlog":{
+            "success":"Backlog deleted",
+            "fail":"Backlog deletion failed"
+        },
+        "project":{
+            "success":"Project deleted",
+            "fail":"Project deletion failed"
+        },
+        "userHistory":{
+            "success":"User history deleted",
+            "fail":"User history deletion failed"
+        },
+        "member":{
+            "success":"Member deleted",
+            "fail":"Member deletion failed"
+        },
+        "realeaseBacklog":{
+            "success":"Release backlog deleted",
+            "fail":"Release backlog deletion failed"
+        },
+        "sprint":{
+            "success":"Sprint deleted",
+            "fail":"Sprint deletion failed"
+        }
+    }
+
+}

@@ -1,35 +1,48 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const config = require('config');
+const User  = require('../models/user');
 
-
-function create(req, res, next) {    
-    res.send('login create');
+function home (req, res, next) {
+    res.render('index', { title: 'Express' }); 
 }
 
-function list(req, res, next) {
-    res.send('login list');
+function login(req, res, next) {
+    const email = req.body.email;
+    const password = req.body.password;
+    const JwtKey = config.get("secret.key");
+    User.findOne({"_email":email}).then(user => {
+        if(user){
+            bcrypt.hash(password, user.salt, (err, hash) => {
+                if(err){
+                    res.status(403).json({
+                        message: res.__('login.fail'),
+                        obj:err
+                    });
+                }
+                if(hash === user.password){
+                    res.status(200).json({
+                        message: res.__('login.success'),
+                        obj: jwt.sign({data:user.data, exp:Math.floor(Date.now()/1000) + 180}, JwtKey)
+                    });
+                } else {
+                    res.status(403).json({
+                        message: res.__('login.fail'),
+                        obj:null
+                    }); 
+                }
+            });
+        } else {
+            res.status(403).json({
+                message: res.__('login.fail'),
+                obj:null
+            });
+        }
+    }).catch(ex => res.status(403).json({
+        message: res.__('login.fail'),
+        obj:ex
+    }));
 }
 
-function index(req, res, next) {    
-    res.send('login index');
-}
-
-function replace(req, res, next) {    
-    res.send('login replace');
-}
-
-function update(req, res, next) {
-    res.send('login update');
-}
-
-function destroy(req, res, next) {
-    res.send('login destroy');
-}
-
-module.exports={
-    list,
-    index,
-    create,
-    replace,
-    update,
-    destroy
-};
+module.exports = {home, login}
