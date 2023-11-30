@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const HistoriaUsuario = require('./models/userHistory');
+const HistoriaUsuario = require('./userHistory');
 
 const TableroControlSchema = new mongoose.Schema({
   productBacklog: {

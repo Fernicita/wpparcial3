@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const User  = require('../models/user');
+const ms = require('ms');
+const expires = ms('1h');
 
 function home (req, res, next) {
     res.render('index', { title: 'Express' }); 
@@ -24,7 +26,7 @@ function login(req, res, next) {
                 if(hash === user.password){
                     res.status(200).json({
                         message: res.__('login.success'),
-                        obj: jwt.sign({data:user.data, exp:Math.floor(Date.now()/1000) + 180}, JwtKey)
+                        obj: jwt.sign({data:user.data, rol:user.rol, exp:expires}, JwtKey)
                     });
                 } else {
                     res.status(403).json({

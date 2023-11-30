@@ -6,12 +6,6 @@ const Nivel = {
   MASTER: 'MASTER',
 };
 
-const Roles = {
-  productOwner: 'Product Owner',
-  scrumMaster: 'Scrum Master',
-  developer: 'Developer',
-};
-
 const MiembroSchema = new mongoose.Schema({
   nombreCompleto: {
     type: String,
@@ -45,15 +39,11 @@ const MiembroSchema = new mongoose.Schema({
     },
     required: true,
   },
-  roles: {
-    type: Array,
-    items: {
-      type: String,
-      enum: Roles,
-      required: true,
-    },
-    required: true,
+  usuario: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
   },
+  
 });
 
 const Miembro = mongoose.model('Miembro', MiembroSchema);

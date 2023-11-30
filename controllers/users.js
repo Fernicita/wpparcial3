@@ -3,16 +3,18 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
 async function create(req, res, next){
-    const name = req.body.name;
-    const lastName = req.body.lastName;
     const email = req.body.email;
     const password = req.body.password;
+    const rol = req.body.rol || 'developer';
     let salt = await bcrypt.genSalt(10);
 
     const passwordHash = await bcrypt.hash(password, salt);
 
     let user = new User({
-        name:name, lastName:lastName, email:email, password:passwordHash, salt:salt
+        email:email, 
+        password:passwordHash, 
+        salt:salt,
+        rol:rol
     }); 
     user.save().then(obj => res.status(200).json({
         message:res.__('register.success'), 
@@ -46,12 +48,13 @@ function index(req, res, next){
 
 function replace(req, res, next){
     const id = req.params.id;
-    let name = req.body.name ? req.body.name : "";
-    let lastName = req.body.lastName ? req.body.lastName : "";
     let email = req.body.email ? req.body.email : "";
     let password = req.body.password ? req.body.password : "";
+    let rol = req.body.rol ? req.body.rol : "";
     let user = new Object({
-        _name:name, _lastName:lastName, _email:email, _password:password
+        _email:email, 
+        _password:password,
+        _rol:rol
     });
     User.findOneAndUpdate({"_id":id}, user, {new:true})
             .then(obj => res.status(200).json({
@@ -65,15 +68,13 @@ function replace(req, res, next){
 
 function update(req, res, next){
     const id = req.params.id;
-    let name = req.body.name;
-    let lastName = req.body.lastName;
     let email = req.body.email;
     let password = req.body.password;
+    let rol = req.body.rol;
     let user = new Object();
-    if(name) user._name = name;
-    if(lastName) user._lastName = lastName;
     if(email) user._email = email;
     if(password) user._password = password;
+    if(rol) user._rol = rol;
     User.findOneAndUpdate({"_id":id}, user)
             .then(obj => res.status(200).json({
                 message:`Usuario actualizado corretamente, con el id: ${id}`,

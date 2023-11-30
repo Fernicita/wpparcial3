@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const HistoriasUsuario = require('./models/userHistory');
+const HistoriasUsuario = require('./userHistory');
 
 const SprintBacklogSchema = new mongoose.Schema({
   idSprint: {

@@ -1,6 +1,6 @@
 {
     "secret":{
-        "key":"c7f6663f925ce99625563a31b3d33adb"
+        "key":"9eaa91b03dff6545ffe52dec26972119787268774c2245071a44cf8ba182b18a"
     },
     "dbChain" : "'mongodb+srv://a299506:mondongo@cluster0.orzxcsb.mongodb.net/?retryWrites=true&w=majority'"
 }

@@ -16,8 +16,8 @@ const HistoriaUsuarioSchema = new mongoose.Schema({
     required: true,
   },
   prioridad: {
-    type: mongoose.Schema.Types.Enum,
-    enum: prio,
+    type: String,
+    enum: Object.values(prio),
     required: true,
   },
   tamaño: {
@@ -37,7 +37,7 @@ const HistoriaUsuarioSchema = new mongoose.Schema({
     required: true,
   },
   valorFibonacci: {
-    type: Integer,
+    type: Number,
     required: true,
   }
 });
