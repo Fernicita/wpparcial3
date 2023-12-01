@@ -24,12 +24,12 @@ const ExpedienteProyectoSchema = new mongoose.Schema({
   projectManager: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Miembro',
-    required: true,
+    required: false,
   },
   productOwner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Miembro',
-    required: true,
+    required: false,
   },
   equipoDesarrollo: {
     type: Array,
@@ -42,7 +42,7 @@ const ExpedienteProyectoSchema = new mongoose.Schema({
   tableroControl: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'TableroControl',
-    required: true,
+    required: false,
   },
 });
 

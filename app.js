@@ -17,6 +17,7 @@ const backlogsRouter = require( './routes/backlogs.js');
 const controlPanelRouter = require( './routes/controlPanel.js' );
 const projectsRouter = require( './routes/projects.js' );
 const loginRouter = require( './routes/index.js' );
+const membersRouter = require( './routes/members.js' );
 const usersHistoryRouter = require( './routes/usersHistory.js' );
 const sprintBacklogsRouter = require( './routes/sprintBacklogs.js' );
 const releaseBacklogsRouter = require( './routes/releaseBacklogs.js' );
@@ -59,6 +60,7 @@ app.use('/projects', projectsRouter);
 app.use('/login', loginRouter);
 app.use('/usersHistory', usersHistoryRouter);
 app.use('/sprintBacklogs', sprintBacklogsRouter);
+app.use('/members', membersRouter);
   
 
 // catch 404 and forward to error handler

@@ -4,19 +4,24 @@ const mongoose = require('mongoose');
 const SprintBacklog = require('../models/sprintBacklog');
 const HistoriaUsuario = require('../models/userHistory');
 
+
+let token;
+beforeAll((done) => {
+    supertest(app)
+        .post("/login")
+        .send({ "email": "dev@dev.com", "password": "dev" })
+        .expect(200)
+        .end((err, res) => {
+            if (err) return done(err);
+            console.log("Res res res", res.body)
+            token = res.body.obj;
+            done();
+        });
+});
+
 describe('Tests CRUD para Sprint Backlogs', () => {
     let sprintBacklogId;
 
-    beforeAll(async () => {
-        await mongoose.connect('mongodb://localhost:27017/mongodb', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-    });
-
-    afterAll(async () => {
-        await mongoose.connection.close();
-    });
 
     it('Debería crear un nuevo sprint backlog', async () => {
         const newSprintBacklogData = {
@@ -26,6 +31,7 @@ describe('Tests CRUD para Sprint Backlogs', () => {
         const response = await supertest(app)
             .post('/sprintBacklogs')
             .send(newSprintBacklogData)
+            .set('Authorization', `Bearer ${token}`)
             .expect(200);
 
         sprintBacklogId = response.body.obj._id;
@@ -34,7 +40,9 @@ describe('Tests CRUD para Sprint Backlogs', () => {
     it('Debería obtener el sprint backlog recién creado', async () => {
         const response = await supertest(app)
             .get(`/sprintBacklogs/${sprintBacklogId}`)
+            .set('Authorization', `Bearer ${token}`)
             .expect(200);
+
 
         expect(response.body.obj._id).toBe(sprintBacklogId);
     });
@@ -46,6 +54,7 @@ describe('Tests CRUD para Sprint Backlogs', () => {
 
         const response = await supertest(app)
             .put(`/sprintBacklogs/${sprintBacklogId}`)
+            .set('Authorization', `Bearer ${token}`)
             .send(updatedSprintBacklogData)
             .expect(200);
 
@@ -59,6 +68,7 @@ describe('Tests CRUD para Sprint Backlogs', () => {
 
         const response = await supertest(app)
             .patch(`/sprintBacklogs/${sprintBacklogId}`)
+            .set('Authorization', `Bearer ${token}`)
             .send(modifiedSprintBacklogData)
             .expect(200);
 
@@ -68,6 +78,7 @@ describe('Tests CRUD para Sprint Backlogs', () => {
     it('Debería eliminar el sprint backlog', async () => {
         const response = await supertest(app)
             .delete(`/sprintBacklogs/${sprintBacklogId}`)
+            .set('Authorization', `Bearer ${token}`)
             .expect(200);
 
         expect(response.body.msg).toBe('Sprint Backlog eliminado correctamente');

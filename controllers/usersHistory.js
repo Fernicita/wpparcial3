@@ -12,14 +12,14 @@ function create(req, res, next) {
     const valorFibonacci = req.body.valorFibonacci;
     
     const userHistory = new UserHistory({
-        idProyecto,
-        nombre,
-        prioridad,
-        tamaño,
-        funcionalidad,
-        beneficio,
-        contexto,
-        valorFibonacci
+        idProyecto: idProyecto,
+        nombre: nombre,
+        prioridad:prioridad,
+        tamaño: tamaño,
+        funcionalidad: funcionalidad,
+        beneficio:beneficio,
+        contexto: contexto,
+        valorFibonacci: valorFibonacci
     });
 
     userHistory.save().then(obj => res.status(200).json({

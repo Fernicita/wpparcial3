@@ -3,9 +3,9 @@ const HistoriaUsuario = require('../models/userHistory');
 const TableroControl = require('../models/controlPanel');
 
 function create(req, res, next) { 
-    const productBacklogId = req.body.productBacklog;
-    const sprintBacklogId = req.body.sprintBacklog;
-    const releaseBacklogId = req.body.releaseBacklog;
+    const productBacklogId = req.body.productBacklog ? req.body.productBacklog : [];
+    const sprintBacklogId = req.body.sprintBacklog ? req.body.sprintBacklog : [];
+    const releaseBacklogId = req.body.releaseBacklog ? req.body.releaseBacklog : [];
 
     productBacklogIds = []
     sprintBacklogIds = []

@@ -1,6 +1,6 @@
 const express = require('express');
 const Member = require('../models/member');
-
+const User = require('../models/user');
 
 function create(req, res, next) {    
     const nombreCompleto = req.body.nombreCompleto;
@@ -9,16 +9,17 @@ function create(req, res, next) {
     const RFC = req.body.RFC;
     const domicilio = req.body.domicilio;
     const habilidades = req.body.habilidades;
-    const roles = req.body.roles;
+    const usuario = req.body.usuario;
+
 
     const member = new Member({
-        nombreCompleto,
-        fechaNacimiento,
-        CURP,
-        RFC,
-        domicilio,
-        habilidades,
-        roles
+        nombreCompleto:nombreCompleto,
+        fechaNacimiento:fechaNacimiento,
+        CURP:CURP,
+        RFC:RFC,
+        domicilio:domicilio,
+        habilidades:habilidades,
+        usuario:usuario
     });
 
     member.save().then(obj => res.status(200).json({

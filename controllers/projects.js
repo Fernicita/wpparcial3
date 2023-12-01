@@ -9,12 +9,11 @@ async function create(req, res, next) {
     const fechaSolicitud = req.body.fechaSolicitud;
     const fechaArranque = req.body.fechaArranque;
     const descripcion = req.body.descripcion;
-    const projectManagerID = req.body.projectManagerId;
-    const productOwnerId = req.body.productOwnerId;
-    const equipoDesarrollo = req.body.equipoDesarrollo;
+    const projectManager = req.body.projectManagerId ? req.body.projectManagerId : null;
+    const productOwner = req.body.productOwnerId ? req.body.productOwnerId : null;
+    const equipoDesarrollo = req.body.equipoDesarrollo ? req.body.equipoDesarrollo : [];
+    const tableroControl = req.body.tableroControl ;
 
-    let projectManager = await Member.findById({"_id": projectManagerID});
-    let productOwner = await Member.findById({"_id": productOwnerID});
 
     const project = new Project({
         idProyecto: idProyecto,
@@ -24,7 +23,8 @@ async function create(req, res, next) {
         descripcion: descripcion,
         projectManager: projectManager,
         productOwner: productOwner,
-        equipoDesarrollo: equipoDesarrollo
+        equipoDesarrollo: equipoDesarrollo,
+        tableroControl: tableroControl
     });
 
     project.save().then((result) => {
