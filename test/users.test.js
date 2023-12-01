@@ -5,10 +5,11 @@ let token;
 beforeAll((done) => {
     supertest(app)
         .post("/login")
-        .send({ "email": "admin@gmail.com", "password": "admin" })
+        .send({ "email": "dev@dev.com", "password": "dev" })
         .expect(200)
         .end((err, res) => {
             if (err) return done(err);
+            console.log("Res res res", res.body)
             token = res.body.obj;
             done();
         });
@@ -22,17 +23,25 @@ describe('Test completo CRUD para usuarios', () => {
             .post('/users')
             .set('Authorization', `Bearer ${token}`)
             .send({
+                "email": "dev@dev.com", 
+                "password": "dev"
                 // Aquí van los datos para crear un nuevo usuario
             })
             .expect(200)
             .end((err, res) => {
                 if (err) return done(err);
                 userId = res.body.obj._id; // Obtener el ID del usuario creado
+                console.log("ESTO ES EL BODYYYYYY",res.body);
+                console.log("ID2",userId);
                 done();
             });
     });
 
+    console.log("ID2",userId);
+
     it('Debería obtener el usuario recién creado', (done) => {
+        console.log("token es gay", token)
+        console.log("ID2",userId);
         supertest(app)
             .get(`/users/${userId}`)
             .set('Authorization', `Bearer ${token}`)
@@ -49,7 +58,7 @@ describe('Test completo CRUD para usuarios', () => {
             .put(`/users/${userId}`)
             .set('Authorization', `Bearer ${token}`)
             .send({
-                // datos para reemplazar en el usuario
+                "email": "dev@dev.com", "password": "deve"
             })
             .expect(200)
             .end((err, res) => {
@@ -64,7 +73,7 @@ describe('Test completo CRUD para usuarios', () => {
             .patch(`/users/${userId}`)
             .set('Authorization', `Bearer ${token}`)
             .send({
-                //  datos para actualizar en el usuario
+                "email": "dev@dev.com", "password": "dev"
             })
             .expect(200)
             .end((err, res) => {

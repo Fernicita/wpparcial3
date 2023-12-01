@@ -7,7 +7,7 @@ describe('Tests CRUD para Release Backlogs', () => {
     let releaseBacklogId;
 
     beforeAll(async () => {
-        await mongoose.connect('mongodb://localhost:27017/testdb', {
+        await mongoose.connect('mongodb://localhost:27017/mongodb', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
@@ -23,7 +23,7 @@ describe('Tests CRUD para Release Backlogs', () => {
         };
 
         const response = await supertest(app)
-            .post('/release-backlogs')
+            .post('/releaseBacklogs')
             .send(newReleaseBacklogData)
             .expect(200);
 
@@ -32,7 +32,7 @@ describe('Tests CRUD para Release Backlogs', () => {
 
     it('Debería obtener el release backlog recién creado', async () => {
         const response = await supertest(app)
-            .get(`/release-backlogs/${releaseBacklogId}`)
+            .get(`/releaseBacklogs/${releaseBacklogId}`)
             .expect(200);
 
         expect(response.body.obj._id).toBe(releaseBacklogId);
@@ -44,7 +44,7 @@ describe('Tests CRUD para Release Backlogs', () => {
         };
 
         const response = await supertest(app)
-            .put(`/release-backlogs/${releaseBacklogId}`)
+            .put(`/releaseBacklogs/${releaseBacklogId}`)
             .send(updatedReleaseBacklogData)
             .expect(200);
 
@@ -57,7 +57,7 @@ describe('Tests CRUD para Release Backlogs', () => {
         };
 
         const response = await supertest(app)
-            .patch(`/release-backlogs/${releaseBacklogId}`)
+            .patch(`/releaseBacklogs/${releaseBacklogId}`)
             .send(modifiedReleaseBacklogData)
             .expect(200);
 
@@ -66,7 +66,7 @@ describe('Tests CRUD para Release Backlogs', () => {
 
     it('Debería eliminar el release backlog', async () => {
         const response = await supertest(app)
-            .delete(`/release-backlogs/${releaseBacklogId}`)
+            .delete(`/releaseBacklogs/${releaseBacklogId}`)
             .expect(200);
 
         expect(response.body.msg).toBe('Release Backlog eliminado correctamente');

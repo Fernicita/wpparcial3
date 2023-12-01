@@ -12,7 +12,7 @@ const jwtkey = config.get('secret.key');
 //app.use(expressjwt({secret:JwtKey,algorithms:['HS256']}).unless({path:['/login']})); 
 
 var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/users');
 const backlogsRouter = require( './routes/backlogs.js');
 const controlPanelRouter = require( './routes/controlPanel.js' );
 const projectsRouter = require( './routes/projects.js' );
@@ -34,13 +34,14 @@ db.on('error', (err) => {
 });
 
 i18n.configure({
-  locales:['es','en'], 
-  cookie:'language',
-  directory:`${__dirname}/locales`
+  locales: ['en', 'es'],
+  cookie: 'language',
+  directory: `${__dirname}/locales`
 });
 
+
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));  
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
@@ -48,9 +49,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(i18n.init);
 
 app.use('/', indexRouter);
-//app.use('/users', usersRouter);
+app.use('/users', usersRouter);
 app.use('/backlogs', backlogsRouter);
 app.use('/controlPanel', controlPanelRouter);
 app.use('/projects', projectsRouter);

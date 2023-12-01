@@ -1,8 +1,5 @@
 {
-    "login":{
-        "success":"Login exitoso",
-        "fail":"Usuario y/o contraseña incorrectos"
-    },
+    "login.success":"Inicio de sesion exitoso",
     "register":{
         "success":"Registro exitoso",
         "fail":"error al registrar"

@@ -8,7 +8,7 @@ describe('Tests CRUD para Sprint Backlogs', () => {
     let sprintBacklogId;
 
     beforeAll(async () => {
-        await mongoose.connect('mongodb://localhost:27017/testdb', {
+        await mongoose.connect('mongodb://localhost:27017/mongodb', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
@@ -24,7 +24,7 @@ describe('Tests CRUD para Sprint Backlogs', () => {
         };
 
         const response = await supertest(app)
-            .post('/sprint-backlogs')
+            .post('/sprintBacklogs')
             .send(newSprintBacklogData)
             .expect(200);
 
@@ -33,7 +33,7 @@ describe('Tests CRUD para Sprint Backlogs', () => {
 
     it('Debería obtener el sprint backlog recién creado', async () => {
         const response = await supertest(app)
-            .get(`/sprint-backlogs/${sprintBacklogId}`)
+            .get(`/sprintBacklogs/${sprintBacklogId}`)
             .expect(200);
 
         expect(response.body.obj._id).toBe(sprintBacklogId);
@@ -45,7 +45,7 @@ describe('Tests CRUD para Sprint Backlogs', () => {
         };
 
         const response = await supertest(app)
-            .put(`/sprint-backlogs/${sprintBacklogId}`)
+            .put(`/sprintBacklogs/${sprintBacklogId}`)
             .send(updatedSprintBacklogData)
             .expect(200);
 
@@ -58,7 +58,7 @@ describe('Tests CRUD para Sprint Backlogs', () => {
         };
 
         const response = await supertest(app)
-            .patch(`/sprint-backlogs/${sprintBacklogId}`)
+            .patch(`/sprintBacklogs/${sprintBacklogId}`)
             .send(modifiedSprintBacklogData)
             .expect(200);
 
@@ -67,7 +67,7 @@ describe('Tests CRUD para Sprint Backlogs', () => {
 
     it('Debería eliminar el sprint backlog', async () => {
         const response = await supertest(app)
-            .delete(`/sprint-backlogs/${sprintBacklogId}`)
+            .delete(`/sprintBacklogs/${sprintBacklogId}`)
             .expect(200);
 
         expect(response.body.msg).toBe('Sprint Backlog eliminado correctamente');

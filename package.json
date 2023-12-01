@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production node ./bin/www",
+    "start": "NODE_ENV=prod node ./bin/www",
     "dev": "supervisor ./bin/www",
-    "test": "jest"
+    "test": "jest "
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

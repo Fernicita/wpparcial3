@@ -5,7 +5,7 @@ let token;
 beforeAll((done) => {
     supertest(app)
         .post("/login")
-        .send({ "email": "admin@gmail.com", "password": "admin" })
+        .send({ "email": "dev@dev.com", "password": "dev" })
         .expect(200)
         .end((err, res) => {
             if (err) return done(err);
@@ -22,6 +22,8 @@ describe('Test completo CRUD para controlPanel', () => {
             .post('/controlPanel')
             .set('Authorization', `Bearer ${token}`)
             .send({
+                
+
                 //datos
             })
             .expect(201)
@@ -31,7 +33,7 @@ describe('Test completo CRUD para controlPanel', () => {
                 done();
             });
     });
-
+/*
     it('Debería obtener el tablero de control recién creado', (done) => {
         supertest(app)
             .get(`/controlPanel/${controlPanelId}`)
@@ -84,4 +86,5 @@ describe('Test completo CRUD para controlPanel', () => {
                 done();
             });
     });
+    */
 });

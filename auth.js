@@ -13,14 +13,26 @@ function checkPermissions(allowedRoles) {
 
     jwt.verify(token, JwtKey, (err, user) => {
       if (err) {
-        return res.sendStatus(403); // Forbiddennnn
+        //retorna un error 403 en json con un mensaje de error
+        return res.status(403).json({
+          message: "fallo1",
+
+          obj:err
+        });
       }
       req.user = user; 
+      console.log("Esto es user", user.rol)
+      console.log("Esto es userr", user)
 
-      const hasPermission = allowedRoles.includes(user._rol);
+      const hasPermission = allowedRoles.includes(user.rol);
       if (!hasPermission) {
-        return res.sendStatus(403); // Forbidden
-      }
+
+        return res.status(403).json({
+                  message: "fallo2",
+                  message2: user.rol,
+                  obj:err
+                });    
+                }
 
       
       next();

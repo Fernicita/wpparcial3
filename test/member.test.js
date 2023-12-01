@@ -4,7 +4,7 @@ const app = require('../app');
 describe('Test CRUD para members', () => {
     let memberId;
 
-    it('Debería crear un nuevo miembro', async (done) => {
+    it('Debería crear un nuevo miembro', async () => {
         const newMemberData = {
             // Proporcionar datos para crear un nuevo miembro
         };
@@ -20,7 +20,7 @@ describe('Test CRUD para members', () => {
             });
     });
 
-    it('Debería obtener el miembro recién creado', async (done) => {
+    it('Debería obtener el miembro recién creado', async () => {
         supertest(app)
             .get(`/members/${memberId}`)
             .expect(200)
@@ -31,7 +31,7 @@ describe('Test CRUD para members', () => {
             });
     });
 
-    it('Debería reemplazar datos en el miembro', async (done) => {
+    it('Debería reemplazar datos en el miembro', async () => {
         const updatedMemberData = {
             // Proporcionar datos para reemplazar en el miembro
         };
@@ -47,7 +47,7 @@ describe('Test CRUD para members', () => {
             });
     });
 
-    it('Debería actualizar datos en el miembro', async (done) => {
+    it('Debería actualizar datos en el miembro', async () => {
         const modifiedMemberData = {
             // Proporcionar datos para actualizar en el miembro
         };
@@ -63,7 +63,7 @@ describe('Test CRUD para members', () => {
             });
     });
 
-    it('Debería eliminar el miembro', async (done) => {
+    it('Debería eliminar el miembro', async () => {
         supertest(app)
             .delete(`/members/${memberId}`)
             .expect(200)

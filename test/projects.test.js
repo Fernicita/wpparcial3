@@ -10,7 +10,7 @@ describe('Tests CRUD para Proyectos', () => {
     let productOwnerId;
 
     beforeAll(async () => {
-        await mongoose.connect('mongodb://localhost:27017/testdb', {
+        await mongoose.connect('mongodb://localhost:27017/mongodb', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });

@@ -7,7 +7,7 @@ describe('Pruebas CRUD para Historias de Usuario', () => {
     let userHistoryId;
 
     beforeAll(async () => {
-        await mongoose.connect('mongodb://localhost:27017/testdb', {
+        await mongoose.connect('mongodb://localhost:27017/mongodb', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
@@ -23,7 +23,7 @@ describe('Pruebas CRUD para Historias de Usuario', () => {
         };
 
         const response = await supertest(app)
-            .post('/users-history')
+            .post('/usersHistory')
             .send(newUserHistoryData)
             .expect(200);
 
@@ -32,10 +32,11 @@ describe('Pruebas CRUD para Historias de Usuario', () => {
 
     it('Debería obtener la historia de usuario recién creada', async () => {
         const response = await supertest(app)
-            .get(`/users-history/${userHistoryId}`)
+            .get(`/usersHistory/${userHistoryId}`)
             .expect(200);
 
         expect(response.body.obj._id).toBe(userHistoryId);
+        done()
     });
 
     it('Debería reemplazar datos en la historia de usuario', async () => {
@@ -44,11 +45,11 @@ describe('Pruebas CRUD para Historias de Usuario', () => {
         };
 
         const response = await supertest(app)
-            .put(`/users-history/${userHistoryId}`)
+            .put(`/usersHistory/${userHistoryId}`)
             .send(updatedUserHistoryData)
             .expect(200);
 
-        expect(response.body.msg).toBe('Historia de usuario actualizada correctamente');
+        expect(response.body.msg).toBe('Historia de usuario actualizada correctamente ');
     });
 
     it('Debería actualizar datos en la historia de usuario', async () => {
@@ -57,18 +58,18 @@ describe('Pruebas CRUD para Historias de Usuario', () => {
         };
 
         const response = await supertest(app)
-            .patch(`/users-history/${userHistoryId}`)
+            .patch(`/usersHistory/${userHistoryId}`)
             .send(modifiedUserHistoryData)
             .expect(200);
 
-        expect(response.body.msg).toBe('Historia de usuario actualizada correctamente');
+        expect(response.body.msg).toBe('Historia de usuario actualizada correctamente ');
     });
 
     it('Debería eliminar la historia de usuario', async () => {
         const response = await supertest(app)
-            .delete(`/users-history/${userHistoryId}`)
+            .delete(`/usersHistory/${userHistoryId}`)
             .expect(200);
 
-        expect(response.body.msg).toBe('Historia de usuario eliminada correctamente');
+        expect(response.body.msg).toBe('Historia de usuario eliminada correctamente ');
     });
 });

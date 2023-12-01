@@ -26,7 +26,7 @@ function login(req, res, next) {
                 if(hash === user.password){
                     res.status(200).json({
                         message: res.__('login.success'),
-                        obj: jwt.sign({data:user.data, rol:user.rol, exp:expires}, JwtKey)
+                        obj: jwt.sign({data:user.data, rol:user.rol, exp:Math.floor(Date.now()/1000)+expires}, JwtKey)
                     });
                 } else {
                     res.status(403).json({
